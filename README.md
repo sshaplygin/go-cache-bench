@@ -20,7 +20,7 @@ one row among peers, built from its documented default configuration. The
 | theine | W-TinyLFU | defaults |
 | ristretto v2 | sampled LFU | waits out async Set (see METHODOLOGY) |
 | sturdyc | LRU + stampede protection | defaults |
-| as-cache | adaptive (bandit over 9 arms incl. S3-FIFO, SIEVE) | README-recommended settings; FIFO arms via upstream wrapper — see note |
+| as-cache | adaptive (bandit over 7 arms incl. S3-FIFO, SIEVE) | README-recommended settings; FIFO arms via upstream wrapper — see note |
 
 Workloads: `zipf`, `uniform`, `loop`, `scan`, `phase-shift` (deterministic,
 seeded), plus trace replay from a local `CACHE_BENCH_TRACES` directory:
@@ -35,6 +35,14 @@ discards hand/visited/ghost state. Numbers for those two arms inside the
 adaptive row therefore reflect the wrapper, not the pure algorithms; the
 pure algorithms will join the matrix as standalone rows once as-cache ships
 native leaf modules (its STAGE M).
+
+**Note on the as-cache pin:** as-cache is pinned to a pre-release commit
+rather than a tag. Its `policies/fifo` module carries no tag at all, and the
+tagged `v0.3.1` root predates the `S3FIFO`/`SIEVE` policy types the module
+needs, so no published tag combination builds. The pin is a pseudo-version of
+`sshaplygin/as-cache@1e2e599`, which resolves from proxy.golang.org like any
+other version and needs no `replace` directive; it moves to tags when as-cache
+releases them.
 
 ## Run it
 
