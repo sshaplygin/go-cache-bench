@@ -32,6 +32,7 @@ func Libraries() []LibraryBuilder {
 		{"theine", newTheineLibrary},
 		{"ristretto", newRistrettoLibrary},
 		{"sturdyc", newSturdycLibrary},
+		{"as-cache", newASCacheLibrary},
 	}
 }
 
