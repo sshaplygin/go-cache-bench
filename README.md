@@ -36,13 +36,10 @@ adaptive row therefore reflect the wrapper, not the pure algorithms; the
 pure algorithms will join the matrix as standalone rows once as-cache ships
 native leaf modules (its STAGE M).
 
-**Note on the as-cache pin:** as-cache is pinned to a pre-release commit
-rather than a tag. Its `policies/fifo` module carries no tag at all, and the
-tagged `v0.3.1` root predates the `S3FIFO`/`SIEVE` policy types the module
-needs, so no published tag combination builds. The pin is a pseudo-version of
-`sshaplygin/as-cache@1e2e599`, which resolves from proxy.golang.org like any
-other version and needs no `replace` directive; it moves to tags when as-cache
-releases them.
+**Note on the as-cache pin:** the as-cache modules used here are pinned to
+their v0.4.0 tags. The FIFO adapter (`policies/fifo`) is an unreleased
+experimental module of as-cache with no tag; it is pinned to a pseudo-version
+of `sshaplygin/as-cache@5ed2dbb`, the v0.4.0 release commit.
 
 ## Run it
 
